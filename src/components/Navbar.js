@@ -5,10 +5,10 @@ import Navbar from "react-bootstrap/Navbar";
 import Button from 'react-bootstrap/Button';
 import {Link} from 'react-router-dom'
 
-export const Navigate = () => {
+export const Navigate = ({mode,onDark}) => {
   return (
     <div>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg={mode === "light" ? "dark" : "light"} variant={mode === "light" ? "dark" : "light"} expand="lg">
         <Container>
           <Navbar.Brand to="/">Text-Utility</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-Navbar-nav" />
@@ -18,7 +18,7 @@ export const Navigate = () => {
               <Nav.Link as={Link} to="about"><b>About</b></Nav.Link>
             </Nav>
           </Navbar.Collapse>
-          <Button variant="outline-primary">Search</Button>
+          <Button variant="outline-primary" onClick={onDark}>Dark Mode</Button>
         </Container>
       </Navbar>
     </div>

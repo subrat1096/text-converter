@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 export const About = () => {
   return (
     <Container>
-        <h2 className="mt-3 mb-3">About Text-Utility</h2>
+        <h2 className="mt-5 mb-4">About Text-Utility</h2>
     <Accordion defaultActiveKey="0">
       <Accordion.Item eventKey="0">
         <Accordion.Header><h4>Welcome to the Text-Utility Tool</h4></Accordion.Header>

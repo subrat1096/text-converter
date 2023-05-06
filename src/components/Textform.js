@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-export const Textform = () => {
+export const Textform = ({onAlert}) => {
   const [text, setText] = useState("");
 
   const handleChange = (e) => {
@@ -12,11 +12,13 @@ export const Textform = () => {
   const handleUpper = () => {
     let newText = text.toUpperCase();
     setText(newText);
+    onAlert("Changed to uppercase", "success")
   };
 
   const handleLower = () => {
     let newText = text.toLowerCase();
     setText(newText);
+    onAlert("Changed to lowercase", "success")
   };
 
   const handlePascal = () => {
@@ -26,6 +28,7 @@ export const Textform = () => {
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
     setText(newText);
+    onAlert("Changed to pascalcase", "success")
   };
 
   const handleCopy = () => {
@@ -33,6 +36,7 @@ export const Textform = () => {
     text.select();
     text.setSelectionRange(0, 999);
     navigator.clipboard.writeText(text.value);
+    onAlert("Content Copied", "success")
   };
 
   const handleCut = () => {
@@ -41,6 +45,7 @@ export const Textform = () => {
     text.setSelectionRange(0, 999);
     navigator.clipboard.writeText(text.value);
     setText("");
+    onAlert("Contet cleared", "success")
   };
 
   const handlePaste = () => {
@@ -49,11 +54,13 @@ export const Textform = () => {
         (document.getElementById("clipboard-paste").innerText = cliptext),
       (err) => console.log(err)
     );
+    onAlert("Pasted to clipboard", "success")
   };
 
   const handleExtraspace = () => {
     let newText = text.split(/[ ]+/).join(" ");
     setText(newText);
+    onAlert("Extraspaces Removed", "success")
   };
 
   return (
